@@ -12,6 +12,7 @@ const Root = createBrowserRouter([
     children: [
         {
             path: "/",
+            loader: ()=> fetch("/phones.json"),
             element: <Home></Home>
         },
         {

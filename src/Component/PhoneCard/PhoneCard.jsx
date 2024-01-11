@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 const PhoneCard = ({ getPhones }) => {
-  console.log(getPhones);
   const { image, price, brand_name, phone_name } = getPhones;
   return (
     <div>
@@ -69,14 +69,14 @@ const PhoneCard = ({ getPhones }) => {
               5.0
             </span>
           </div>
-          <h5 className="text-lg font-semibold bg-green-400 mt-2 mb-1 rounded-sm px-[1px]">
+          <h5 className="text-lg font-semibold bg-green-400 mt-3 mb-[9px] rounded-sm px-[1px]">
             {brand_name}
           </h5>
           <div className="flex items-center justify-between">
             <h5 className="text-lg font-semibold">{phone_name}</h5>
             <span className="text-lg font-bold">{price}</span>
           </div>
-          <div className="w-full my-2">
+          <div className="w-full my-3">
             <Link>
               <button
                 className="block bg-gray-200 w-full select-none rounded-lg bg-blue-gray-900/10 py-[10px] px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -91,5 +91,9 @@ const PhoneCard = ({ getPhones }) => {
     </div>
   );
 };
+
+PhoneCard.propTypes = {
+    getPhones: PropTypes.object
+}
 
 export default PhoneCard;

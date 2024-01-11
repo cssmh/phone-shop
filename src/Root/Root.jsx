@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../MainLayout/MainLayout";
+import Login from "../NavComponent/Login/Login";
+import Favorite from "../NavComponent/Favorite/Favorite";
+import Home from "../Component/Home/Home";
 
 const Root = createBrowserRouter([
   {
@@ -8,8 +11,17 @@ const Root = createBrowserRouter([
     errorElement: "ki?",
     children: [
         {
-
-        }
+            path: "/",
+            element: <Home></Home>
+        },
+        {
+            path: "/login",
+            element: <Login></Login>
+        },
+        {
+            path: "/favorite",
+            element: <Favorite></Favorite>
+        },
     ]
   },
 ]);

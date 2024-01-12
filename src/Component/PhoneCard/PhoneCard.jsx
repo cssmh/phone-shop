@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const PhoneCard = ({ getPhones }) => {
@@ -6,16 +6,15 @@ const PhoneCard = ({ getPhones }) => {
   return (
     <div>
       <div className="rounded-lg shadow-xl">
-        <a
-          href="#"
-          className="flex justify-center border-[1px] border-r-gray-100 rounded-lg m-4"
-        >
-          <img
-            className="h-64 flex justify-center"
-            src={image}
-            alt="product image"
-          />
-        </a>
+        <Link to={`/phone/${id}`}>
+          <div className="flex justify-center border-[1px] border-r-gray-100 rounded-lg m-4">
+            <img
+              className="h-64 flex justify-center"
+              src={image}
+              alt="product image"
+            />
+          </div>
+        </Link>
         <div className="px-5 pb-2">
           <div className="flex items-center my-1">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -93,7 +92,7 @@ const PhoneCard = ({ getPhones }) => {
 };
 
 PhoneCard.propTypes = {
-    getPhones: PropTypes.object
-}
+  getPhones: PropTypes.object,
+};
 
 export default PhoneCard;

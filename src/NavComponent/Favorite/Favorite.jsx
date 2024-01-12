@@ -16,18 +16,18 @@ const Favorite = () => {
   //     );
   //   }
 
-  const getLocalId = getLocalStorage();
-
+  
   const loaderData = useLoaderData();
   useEffect(() => {
+      const getLocalId = getLocalStorage();
     if (getLocalId.length > 0) {
       const matchBothLoaderLocal = loaderData.filter((phone) =>
         getLocalId.includes(parseInt(phone.id))
-      );
-      setMatchId(matchBothLoaderLocal);
+        );
+        setMatchId(matchBothLoaderLocal);
     }
-  }, []);
-
+  }, [loaderData]);
+  
   const handleShowFavorite = () => {
     setShowAllBtn(!showAllBtn);
     if (showAllBtn) {

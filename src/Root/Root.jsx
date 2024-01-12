@@ -4,12 +4,13 @@ import Login from "../NavComponent/Login/Login";
 import Favorite from "../NavComponent/Favorite/Favorite";
 import Home from "../Component/Home/Home";
 import CardDetails from "../Component/PhoneCard/CardDetails";
+import Error from "../Component/Error/Error";
 
 const Root = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: "ki?",
+    errorElement: <Error></Error>,
     children: [
         {
             path: "/",

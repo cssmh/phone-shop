@@ -5,6 +5,7 @@ import {
 } from "../../Utility/LocalStorage";
 import { useLoaderData } from "react-router-dom";
 import FavoriteCard from "./FavoriteCard";
+import swal from "sweetalert";
 
 const Favorite = () => {
   const [showAllBtn, setShowAllBtn] = useState(false);
@@ -38,6 +39,7 @@ const Favorite = () => {
     localStorage.clear();
     setDisplayFav([]);
     setMatchId([]);
+    swal("Good job!", "Successfully Deleted!", "success");
   };
   //   Delete all amd set to show end
 
@@ -55,7 +57,7 @@ const Favorite = () => {
   return (
     <div>
       {matchId.length > 0 && (
-        <h1 className="text-3xl text-center py-8 bg-green-200">
+        <h1 className="text-3xl text-center py-8 bg-green-300">
           Your Favorite Phones {matchId.length}
         </h1>
       )}

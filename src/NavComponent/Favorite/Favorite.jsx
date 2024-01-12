@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getLocalStorage } from "../../Utility/LocalStorage";
+import {
+  getLocalStorage,
+  handleRemoveFromLocalStorage,
+} from "../../Utility/LocalStorage";
 import { useLoaderData } from "react-router-dom";
 import FavoriteCard from "./FavoriteCard";
 
@@ -8,26 +11,19 @@ const Favorite = () => {
   const [matchId, setMatchId] = useState([]);
   const [displayFav, setDisplayFav] = useState(3);
 
-  //   if (matchId.length < 1) {
-  //     const noData = (
-  //       <div>
-  //         <p>No data found</p>
-  //       </div>
-  //     );
-  //   }
-
-  
+  // Match local and loadData and pass to FavoriteCard
   const loaderData = useLoaderData();
   useEffect(() => {
-      const getLocalId = getLocalStorage();
+    const getLocalId = getLocalStorage();
     if (getLocalId.length > 0) {
       const matchBothLoaderLocal = loaderData.filter((phone) =>
         getLocalId.includes(parseInt(phone.id))
-        );
-        setMatchId(matchBothLoaderLocal);
+      );
+      setMatchId(matchBothLoaderLocal);
     }
   }, [loaderData]);
-  
+  // Match local and loadData and pass to FavoriteCard end
+
   const handleShowFavorite = () => {
     setShowAllBtn(!showAllBtn);
     if (showAllBtn) {
@@ -37,11 +33,24 @@ const Favorite = () => {
     }
   };
 
+  //   Delete all amd set to show
   const deleteAllFavorite = () => {
     localStorage.clear();
     setDisplayFav([]);
     setMatchId([]);
   };
+  //   Delete all amd set to show end
+
+  //   Single favorite card remove from local and set to show again
+  const singleRemoveHandler = (idx) => {
+    handleRemoveFromLocalStorage(parseInt(idx));
+    const getLocalId = getLocalStorage();
+    const matchBothAgain = loaderData.filter((phone) =>
+      getLocalId.includes(parseInt(phone.id))
+    );
+    setMatchId(matchBothAgain);
+  };
+  //   Single favorite card remove from local and set to show again end
 
   return (
     <div>
@@ -68,7 +77,11 @@ const Favorite = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1 max-w-5xl mx-auto mb-5">
         {matchId.slice(0, displayFav).map((phone) => (
-          <FavoriteCard key={phone.id} getCard={phone}></FavoriteCard>
+          <FavoriteCard
+            key={phone.id}
+            getCard={phone}
+            singleRemoveHandler={singleRemoveHandler}
+          ></FavoriteCard>
         ))}
       </div>
       <div

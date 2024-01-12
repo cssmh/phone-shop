@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-const FavoriteCard = ({ getCard }) => {
-  const { image, brand_name, phone_name, price } = getCard;
+const FavoriteCard = ({ getCard, singleRemoveHandler }) => {
+  const { id, image, brand_name, phone_name, price } = getCard;
 
   return (
     <div className="text-center rounded-md border-2 border-gray-300 py-5">
@@ -9,7 +9,12 @@ const FavoriteCard = ({ getCard }) => {
       <div>
         <p className="font-semibold">Price: ${price}</p>
         <h5 className="text-xl font-semibold">{phone_name}</h5>
-        <button className="py-1 px-2 mt-1 font-semibold rounded-lg bg-green-400">Remove from favorite</button>
+        <button
+          onClick={() => singleRemoveHandler(id)}
+          className="py-1 px-2 mt-1 font-semibold rounded-lg bg-green-400"
+        >
+          Remove from favorite
+        </button>
       </div>
     </div>
   );
@@ -17,6 +22,7 @@ const FavoriteCard = ({ getCard }) => {
 
 FavoriteCard.propTypes = {
   getCard: PropTypes.object,
+  singleRemoveHandler: PropTypes.func
 };
 
 export default FavoriteCard;

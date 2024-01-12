@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { getLocalStorage, handleLocalStorage } from "../../Utility/LocalStorage";
-import swal from "sweetalert";
+import { handleLocalStorage } from "../../Utility/LocalStorage";
 
 const CardDetails = () => {
   const [matchBoth, setMatchBoth] = useState([]);
-  const [getId, setGetId] = useState(0);
 
   const paramsId = useParams();
   const intParamId = parseInt(paramsId.phoneId);
@@ -24,17 +22,7 @@ const CardDetails = () => {
 
   const intIdToSendLocalStorage = parseInt(id)
   const handleFavoriteButton = () => {
-    setGetId(intIdToSendLocalStorage)
     handleLocalStorage(intIdToSendLocalStorage)
-    const getLocalIds = getLocalStorage()
-    if(getLocalIds.length > 0){
-      const matchBothForSwalShow = getLocalIds.find(id => id === getId)
-      if(!matchBothForSwalShow){
-        swal("Good job!", "Successfully Added!", "success");
-      }else{
-        swal("Already Exist!", "No Duplicate!", "error");
-      }
-    }
   }
 
   return (

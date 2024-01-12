@@ -68,7 +68,7 @@ const PhoneCard = ({ getPhones }) => {
               5.0
             </span>
           </div>
-          <h5 className="text-lg font-semibold bg-green-400 mt-3 mb-[9px] rounded-sm px-[1px]">
+          <h5 className="text-lg font-semibold bg-green-300 mt-3 mb-[9px] rounded-sm px-[1px]">
             {brand_name}
           </h5>
           <div className="flex items-center justify-between">

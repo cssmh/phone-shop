@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 const FavoriteCard = ({ getCard }) => {
   const { image, brand_name, phone_name, price } = getCard;
-  console.log(getCard);
   return (
     <div className="text-center rounded-md border-2 border-gray-300 py-5">
       <img className="w-1/5 md:w-2/5 mx-auto" src={image} alt="product image" />

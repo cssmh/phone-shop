@@ -22,6 +22,7 @@ const Root = createBrowserRouter([
         },
         {
             path: "/favorite",
+            loader: ()=> fetch("/phones.json"),
             element: <Favorite></Favorite>
         },
         {

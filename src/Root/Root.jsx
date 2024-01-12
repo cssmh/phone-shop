@@ -3,6 +3,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Login from "../NavComponent/Login/Login";
 import Favorite from "../NavComponent/Favorite/Favorite";
 import Home from "../Component/Home/Home";
+import CardDetails from "../Component/PhoneCard/CardDetails";
 
 const Root = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const Root = createBrowserRouter([
         {
             path: "/favorite",
             element: <Favorite></Favorite>
+        },
+        {
+            path: "/phone/:phoneId",
+            loader: ()=> fetch("/phones.json"),
+            element: <CardDetails></CardDetails>
         },
     ]
   },

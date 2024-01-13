@@ -10,7 +10,7 @@ import swal from "sweetalert";
 const Favorite = () => {
   const [showAllBtn, setShowAllBtn] = useState(false);
   const [matchId, setMatchId] = useState([]);
-  const [displayFav, setDisplayFav] = useState(3);
+  const [displayFav, setDisplayFav] = useState(4);
 
   // Match local and loadData and pass to FavoriteCard
   const loaderData = useLoaderData();
@@ -28,7 +28,7 @@ const Favorite = () => {
   const handleShowFavorite = () => {
     setShowAllBtn(!showAllBtn);
     if (showAllBtn) {
-      setDisplayFav(3);
+      setDisplayFav(4);
     } else {
       setDisplayFav(matchId.length);
     }
@@ -54,6 +54,8 @@ const Favorite = () => {
   };
   //   Single favorite card remove from local and set to show again end
 
+  const totalPrice = matchId.reduce((preValue, currentValue) => preValue + currentValue.price, 0)
+
   return (
     <div>
       {matchId.length > 0 && (
@@ -71,11 +73,12 @@ const Favorite = () => {
       <div
         className={`${
           matchId.length > 0
-            ? "w-36 mx-auto text-center my-2 font-semibold bg-green-400 rounded-md"
+            ? "text-center"
             : "hidden"
         }`}
       >
-        <button onClick={deleteAllFavorite}>Delete all Favorite</button>
+        <button className="w-[150px] mx-auto mt-2 font-medium bg-red-400 rounded-md" onClick={deleteAllFavorite}>Delete all Favorite!!</button>
+        <p className="text-base mb-1 text-green-500 font-semibold">Total Price of all Favorite phones: ${totalPrice}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-1 max-w-5xl mx-auto mb-5">
         {matchId.slice(0, displayFav).map((phone) => (
@@ -88,7 +91,7 @@ const Favorite = () => {
       </div>
       <div
         className={`${
-          matchId.length > 3
+          matchId.length > 4
             ? "block w-24 mx-auto text-center mb-5 font-semibold bg-green-400 rounded-md"
             : "hidden"
         }`}

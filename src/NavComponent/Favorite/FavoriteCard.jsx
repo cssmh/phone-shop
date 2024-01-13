@@ -11,7 +11,7 @@ const FavoriteCard = ({ getCard, singleRemoveHandler }) => {
         <h5 className="text-xl font-semibold">{phone_name}</h5>
         <button
           onClick={() => singleRemoveHandler(id)}
-          className="py-1 px-2 mt-1 font-semibold rounded-lg bg-green-400"
+          className="py-1 px-2 mt-1 font-medium rounded-lg bg-green-400"
         >
           Remove from favorite
         </button>
